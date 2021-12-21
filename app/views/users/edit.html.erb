@@ -1,0 +1,35 @@
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>errors have occurred
+  <% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <h2>User info</h2>
+         <%= form_with model:@user, local:true do |f| %>
+         <div class="form_group">
+          <%= f.label :name, "Name" %>
+          <%= f.text_field :name, class: "form-control", autofocus: true, id:"inputName", placeholder:"name", size: "50" %>
+         </div>
+         <div class="form_group">
+          <%= f.label :profile_image_id, "Image" %>
+          <div></div>
+          <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+         <div>
+         <div class= "form-group">
+           <%= f.label :introduction,"Introduction" %>
+           <%= f.text_area :introduction, class: "form-control", autofocus: true, id:"inputIntroduction", placeholder:"introduction", size: "50" %>
+          </div>
+          <div class= "form-group">
+           <%= f.submit "Update User",class: "btn btn-secondary" %>
+          </div>
+         <% end %>
+      </div>
+    </div>
+  </div>
+</main>
+
+
